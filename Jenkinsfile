@@ -1,3 +1,4 @@
+
 pipeline {
 
     parameters {
@@ -8,44 +9,59 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
 
-   agent  any
+    agent any
+
     stages {
-        stage('checkout') {
+        stage('Checkout') {
             steps {
-                 script{
-                        dir("terraform")
-                        {
-                            git "https://github.com/rayeeta/eks-terraform-jenkins-pipeline.git"
-                        }
+                script {
+                    echo 'Checking out code from Git repository...'
+                    dir("terraform") {
+                        git branch: 'main', url: 'https://github.com/rayeeta/eks-terraform-jenkins-pipeline.git'
                     }
                 }
             }
-stage('Terraform Init') {
+        }
+
+        stage('Terraform Init') {
             steps {
-                // Initialize Terraform
-                sh 'terraform init'
+                echo 'Initializing Terraform...'
+                dir("terraform") {
+                    sh 'terraform init'
+                }
             }
         }
 
         stage('Terraform Validate') {
             steps {
-                // Validate the Terraform configuration
-                sh 'terraform validate'
+                echo 'Validating Terraform configuration...'
+                dir("terraform") {
+                    sh 'terraform validate'
+                }
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                // Generate and display the Terraform execution plan
-                sh 'terraform plan'
+                echo 'Generating Terraform plan...'
+                dir("terraform") {
+                    sh 'terraform plan -out=tfplan'
+                }
             }
         }
 
         stage('Terraform Apply') {
+            when {
+                expression {
+                    return params.autoApprove
+                }
+            }
             steps {
-                // Automatically apply the Terraform plan without manual approval
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: "${AWS_CREDENTIALS_ID}"]]) {
-                    sh 'terraform apply -auto-approve'
+                echo 'Applying Terraform plan...'
+                dir("terraform") {
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: "${AWS_CREDENTIALS_ID}"]]) {
+                        sh 'terraform apply -auto-approve tfplan'
+                    }
                 }
             }
         }
@@ -59,7 +75,7 @@ stage('Terraform Init') {
             echo 'Infrastructure application failed.'
         }
         always {
-            // Clean up the workspace after the build completes
+            echo 'Cleaning up workspace...'
             cleanWs()
         }
     }

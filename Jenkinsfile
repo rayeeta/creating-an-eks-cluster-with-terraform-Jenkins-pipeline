@@ -17,7 +17,7 @@ pipeline {
                 script {
                     echo 'Checking out code from Git repository...'
                     dir("terraform") {
-                        git branch: 'main', url: 'https://github.com/rayeeta/eks-terraform-jenkins-pipeline.git'
+                        git branch: 'master', url: 'https://github.com/rayeeta/eks-terraform-jenkins-pipeline.git'
                     }
                 }
             }

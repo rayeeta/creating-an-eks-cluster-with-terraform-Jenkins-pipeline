@@ -32,6 +32,92 @@
         with private key)> ID(give it a name of your choice)--> Private Key(check the box)--> Add-Paste the private key 
         in the box--> Ok and quit.
 
+###    1- Integrate your local environment with a GitHub account by generating a public and private key. 
+        ssh-keygen. cat the public key and paste it in the GitHub profile settings-ssh&GPG keys--> 
+        New ssh key and paste the public key in the box. This way you have set the configuration of the 
+        Github account and your local environment.
+        
+###    2-  Integrating Jenkins UI with GitHub by Generating Personal Access Token Phase 1:
+    
+        Go to the GitHub UI and click on profile settings-Developers settings--> Personal Access Token Tokens (Classic)-->
+        Generate new token (classic)--> Give a name and select the scopes needed for the project you or your team will 
+        want GitHub to do. Copy the token and head over to the next stage.
+        
+###    3-  Integrating Jenkins env with the Personal-Access-Token phase 2: 
+
+        In the Jenkins UI, head to Manage Jenkins--> System(Configure global systems and paths)--> Scroll down to the 
+        GitHub section-GitHub server--> Give it a name, API URL stays the same--> Credentials--> Add-Jenkins--> 
+        Kind(select: Secret Text)--> UserName(Give it a name)--> Password(make sure to paste the 
+        Personal Access Token created from Github)--> ID(give the token a name)--> ADD and quit--> +ADD dropdown 
+        section select the name of the token you gave at signup-Run Test Connection--> Apply and Save.
+        
+###    4-  Hosting the PRIVATE key from ssh-keygen phase 3: 
+        Cat the private key and copy its entire content then head to the Jenkins dashboard--> 
+        Manage Jenkins--> Security--> Credentials--> Global--> Add Credentials--> Kind(SSH username 
+        with private key)> ID(give it a name of your choice)--> Private Key(check the box)--> Add-Paste the private key 
+        in the box--> Ok and quit.
+
+###    5-  AWS and Jenkins Integration:
+
+        Install Necessary Jenkins Plugins
+        First, install the required Jenkins plugins for AWS integration:
+
+        AWS Steps: Provides steps for interacting with AWS services.
+        AWS CodeDeploy Plugin: For deploying applications using AWS CodeDeploy.
+        Amazon ECR Plugin: For working with Amazon Elastic Container Registry.
+        Amazon ECS Plugin: For interacting with Amazon Elastic Container Service.
+        AWS Lambda Plugin: For deploying AWS Lambda functions.
+
+#       To install these plugins:
+
+        Go to Manage Jenkins > Manage Plugins.
+        Click on the Available tab.
+        Search for the desired plugin (e.g., "AWS Steps").
+        Check the box next to the plugin and click Install without restart.
+        Configure AWS Credentials in Jenkins
+        Jenkins needs credentials to authenticate with AWS. You can set up these 
+        credentials in Jenkins using IAM (Identity and Access Management) roles or user credentials.
+
+##      Using AWS IAM User Credentials:
+
+#       Create an IAM User in AWS:
+
+        Go to the AWS Management Console.
+        Navigate to IAM > Users > Add user.
+        Provide a username and select "Programmatic access".
+        Attach the necessary policies or permissions.
+        Add AWS Credentials to Jenkins:
+
+#       Go to Manage Jenkins > Manage Credentials.
+        Select the appropriate domain (e.g., (global)).
+        Click on Add Credentials.
+        Choose Amazon Web Services Credentials as the kind.
+        Enter your Access Key ID and Secret Access Key obtained from AWS IAM.
+        Provide an ID and description for easy reference.
+        Configure AWS CLI (Optional)
+
+##      If you plan to use AWS CLI commands in your Jenkins pipelines or jobs:
+
+#       Install AWS CLI on Jenkins Server:
+
+        Follow the AWS CLI installation instructions for your operating system: 
+        AWS CLI Installation Guide.
+        Configure AWS CLI:
+
+        Run aws configure on your Jenkins server to set up AWS credentials.
+        This step is optional if you are using the Jenkins AWS plugins for interactions.
+
+##      Set Up Jenkins Pipeline or Freestyle Project
+        Integrate AWS services into your Jenkins pipeline or freestyle project.
+
+#       For Jenkins Pipeline:
+
+        Use AWS Plugin Steps:
+
+        Include AWS-specific steps in your Jenkinsfile to interact with AWS services.        
+
+
+
 # Back to Jenkins Dashboard:
 
     New item-name the project(e.g Test job)--> Free Style Project--> Ok--> Source Code Management

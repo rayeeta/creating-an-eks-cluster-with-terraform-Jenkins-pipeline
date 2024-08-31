@@ -37,7 +37,8 @@
     New item-name the project(e.g Test job)--> Free Style Project--> Ok-Source Code Management
     section--> Select Git--> head to the GitHub repo--> Code(the green button)--> SSH--> Copy the link-head to Jenkins UI-->
     Credentials(select the private key username that was just created--> Branches to build section(main)--> Build Triggers(check:
-    GitHub hook trigger for GITScm polling)--> Post--> build Actions--> Add post--> build action(Set GitHub commit status (universal))-->        select: What-One of the defaults messages and statuses.
+    GitHub hook trigger for GITScm polling)--> Post--> build Actions--> Add post--> build action(Set GitHub commit status 
+    (Universal))--> Select: What-One of the Defaults messages and Statuses.
 
 
 # Last integration: 

@@ -7,31 +7,45 @@
     2- Terraform with Jenkins
 
 
-### 1- Integrate your local environment with a GitHub account by generating a public and private key. 
-        ssh-keygen. cat the public key and paste it in the GitHub profile settings-ssh&GPG keys--> New ssh key and
-        paste the public key in the box. This way you have set the configuration of the github account and
-        your local environment.
-    2-  Integrating Jenkins UI with GitHub by Generating Personal Access Token phase 1: 
-        Go the GitHub UI and click on profile settings-Developers settings--> Personal Access Token Tokens (Classic)-->
+###    1- Integrate your local environment with a GitHub account by generating a public and private key. 
+        ssh-keygen. cat the public key and paste it in the GitHub profile settings-ssh&GPG keys--> 
+        New ssh key and paste the public key in the box. This way you have set the configuration of the 
+        Github account and your local environment.
+        
+###    2-  Integrating Jenkins UI with GitHub by Generating Personal Access Token Phase 1:
+    
+        Go to the GitHub UI and click on profile settings-Developers settings--> Personal Access Token Tokens (Classic)-->
         Generate new token (classic)--> Give a name and select the scopes needed for the project you or your team will 
         want GitHub to do. Copy the token and head over to the next stage.
-    3-  Integrating Jenkins env with the Personal-Access-Token phase 2: 
+        
+###    3-  Integrating Jenkins env with the Personal-Access-Token phase 2: 
+
         In the Jenkins UI, head to Manage Jenkins--> System(Configure global systems and paths)--> Scroll down to the 
         GitHub section-GitHub server--> Give it a name, API URL stays the same--> Credentials--> Add-Jenkins--> 
-        Kind(select: Secret Text)--> UserName(Give it a name)--> Password(make sure to paste the Personal Access Token created from Github)-->
-        ID(give the token a name)--> ADD and quit--> +ADD dropdown section select the name of the token you gave at signup-Run Test Connection--> 
-        Apply and Save.
-    4-  Hosting the PRIVATE key from ssh-keygen phase 3: Cat the private key and copy its entire content and head to the Jenkins UI-->
-        Manage Jenkins--> Security--> Credentials--> Global--> Add Credentials--> Kind(SSH username with private key)> ID(give it a name of your choice)-->
-        Private Key(check the box)-Add-Paste the private key in the box-Ok and quit.
+        Kind(select: Secret Text)--> UserName(Give it a name)--> Password(make sure to paste the 
+        Personal Access Token created from Github)--> ID(give the token a name)--> ADD and quit--> +ADD dropdown 
+        section select the name of the token you gave at signup-Run Test Connection--> Apply and Save.
+        
+###    4-  Hosting the PRIVATE key from ssh-keygen phase 3: 
+        Cat the private key and copy its entire content then head to the Jenkins dashboard--> 
+        Manage Jenkins--> Security--> Credentials--> Global--> Add Credentials--> Kind(SSH username 
+        with private key)> ID(give it a name of your choice)--> Private Key(check the box)--> Add-Paste the private key 
+        in the box--> Ok and quit.
 
-# Back to Dashboard, New item-name the project(e.g Test job)--> Free Style Project--> Ok-Source Code Management section--> Select Git-->
-# head to the GitHub repo--> Code(the green button)--> SSH--> Copy the link-head to Jenkins UI--> Credentials(select the private key username that was just created--> Branches to build section(main)--> Build Triggers(check: GitHub hook trigger for GITScm polling)--> Post--> build Actions--> Add post--> build action(Set GitHub commit status (universal))--> select: What-One of the defaults messages and statuses.
+# Back to Jenkins Dashboard:
+
+    New item-name the project(e.g Test job)--> Free Style Project--> Ok-Source Code Management
+    section--> Select Git--> head to the GitHub repo--> Code(the green button)--> SSH--> Copy the link-head to Jenkins UI-->
+    Credentials(select the private key username that was just created--> Branches to build section(main)--> Build Triggers(check:
+    GitHub hook trigger for GITScm polling)--> Post--> build Actions--> Add post--> build action(Set GitHub commit status (universal))-->        select: What-One of the defaults messages and statuses.
 
 
-# Last integration: Go to the GitHub repository--> Settings--> webhooks--> Add Webhook--> Payload URL section(paste the url of the Jenkins 
-UI ending with 8080/ and add the endpoint for Jenkins with (GitHub-webhook)). I has to look something like this (http://54.205.66.23:8080/github-webhook/)-->
-Content Type(application json)--> which events will like to trigger this webhook: select Just the push event--> check Active--> Add Webhook
+# Last integration: 
+
+    Go to the GitHub repository--> Settings--> webhooks--> Add Webhook--> Payload URL section(paste the URL of the Jenkins 
+    UI ending with 8080/ and add the endpoint for Jenkins with (GitHub-webhook)). It has to look something like this             
+    (http://54.205.66.23:8080/github-webhook/)--> Content Type(application json)--> which events will like to trigger this webhook: 
+    select Just the push event--> check Active--> Add Webhook
 
 
 #### 1. *Install Jenkins and Required Plugins*

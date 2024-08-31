@@ -25,11 +25,11 @@
         Manage Jenkins--> Security--> Credentials--> Global--> Add Credentials--> Kind(SSH username with private key)> ID(give it a name of your choice)-->
         Private Key(check the box)-Add-Paste the private key in the box-Ok and quit.
 
-### Back to Dashboard, New item-name the project(e.g Test job)--> Free Style Project--> Ok-Source Code Management section--> Select Git-->
+# Back to Dashboard, New item-name the project(e.g Test job)--> Free Style Project--> Ok-Source Code Management section--> Select Git-->
 # head to the GitHub repo--> Code(the green button)--> SSH--> Copy the link-head to Jenkins UI--> Credentials(select the private key username that was just created--> Branches to build section(main)--> Build Triggers(check: GitHub hook trigger for GITScm polling)--> Post--> build Actions--> Add post--> build action(Set GitHub commit status (universal))--> select: What-One of the defaults messages and statuses.
 
 
-### Last integration: Go to the GitHub repository--> Settings--> webhooks--> Add Webhook--> Payload URL section(paste the url of the Jenkins 
+# Last integration: Go to the GitHub repository--> Settings--> webhooks--> Add Webhook--> Payload URL section(paste the url of the Jenkins 
 UI ending with 8080/ and add the endpoint for Jenkins with (GitHub-webhook)). I has to look something like this (http://54.205.66.23:8080/github-webhook/)-->
 Content Type(application json)--> which events will like to trigger this webhook: select Just the push event--> check Active--> Add Webhook
 

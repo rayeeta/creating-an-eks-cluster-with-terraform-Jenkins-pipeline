@@ -106,7 +106,7 @@ Fill in the AWS Credentials:
 
 # Click "OK" to save.
         
-#       To install these plugins:
+#       To install plugins:
 
         Go to Manage Jenkins > Manage Plugins.
         Click on the Available tab.

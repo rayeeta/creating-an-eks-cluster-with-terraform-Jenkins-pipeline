@@ -1,4 +1,3 @@
-
 pipeline {
     agent any  // Use any available agent
 
@@ -10,6 +9,7 @@ pipeline {
         // Set this to 'true' or 'false' depending on whether you want to allow destruction
         DESTROY_RESOURCES = 'false'
     }
+
     stages {
         stage('Checkout SCM') {
             steps {
@@ -50,8 +50,7 @@ pipeline {
                 }
             }
         }
-    }
-stages {
+
         stage('Terraform Destroy') {
             steps {
                 script {
@@ -66,6 +65,7 @@ stages {
             }
         }
     }
+
     post {
         always {
             script {

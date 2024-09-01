@@ -7,13 +7,18 @@
     2- Terraform with Jenkins
     3- AWS with Jenkins
 
+#      Create an EC2-instance in AWS, install Jenkins/Java, and Terraform in the running server:
+
+        Jenkins installation: https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
+        Terraform installation: https://developer.hashicorp.com/terraform/install
+
 
 ###    1- Integrate your local environment with a GitHub account by generating a public and private key. 
         ssh-keygen. cat the public key and paste it in the GitHub profile settings--> ssh&GPG keys--> 
         New ssh key and paste the public key in the box. This way you have set the configuration of the 
         Github account and your local environment.
         
-###    2-  Integrating Jenkins UI with GitHub by Generating Personal Access Token Phase 1:
+###    2-  Integrating Jenkins UI with GitHub by Generating Personal Access Token:
     
         Go to the GitHub UI and click on profile settings-Developers settings--> Personal Access Token Tokens (Classic)-->
         Generate new token (classic)--> Give a name and select the scopes needed for the project you or your team will 

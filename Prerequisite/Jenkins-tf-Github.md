@@ -8,7 +8,7 @@
 
 
 ###    1- Integrate your local environment with a GitHub account by generating a public and private key. 
-        ssh-keygen. cat the public key and paste it in the GitHub profile settings-ssh&GPG keys--> 
+        ssh-keygen. cat the public key and paste it in the GitHub profile settings--> ssh&GPG keys--> 
         New ssh key and paste the public key in the box. This way you have set the configuration of the 
         Github account and your local environment.
         
@@ -20,6 +20,8 @@
         
 ###    3-  Integrating Jenkins env with the Personal-Access-Token phase 2: 
 
+        Browse to http://localhost:8080 e.g(18.144.61.150:8080 and hit ENTER) (or whichever port you configured 
+        for Jenkins when installing it) and wait until the Unlock Jenkins page appears.
         In the Jenkins UI, head to Manage Jenkins--> System(Configure global systems and paths)--> Scroll down to the 
         GitHub section-GitHub server--> Give it a name, API URL stays the same--> Credentials--> Add-Jenkins--> 
         Kind(select: Secret Text)--> UserName(Give it a name)--> Password(make sure to paste the 

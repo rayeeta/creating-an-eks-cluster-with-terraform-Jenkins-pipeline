@@ -1,3 +1,4 @@
+
 pipeline {
     agent any  // Use any available agent
 
@@ -37,18 +38,23 @@ pipeline {
             }
         }
 
-        stage('Approval') {
-            steps {
-                input message: 'Approve Terraform Plan?', ok: 'Approve'
-            }
-        }
-
         stage('Terraform Apply') {
             steps {
                 script {
                     // Apply the Terraform plan with auto-approval
                     withCredentials([aws(credentialsId: "${env.AWS_CREDENTIALS_ID}", region: 'us-west-1')]) {
                         sh 'terraform apply --auto-approve tfplan'
+                    }
+                }
+            }
+        }
+
+        stage('Terraform Destroy') {
+            steps {
+                script {
+                    // Destroy the Terraform-managed infrastructure with auto-approval
+                    withCredentials([aws(credentialsId: "${env.AWS_CREDENTIALS_ID}", region: 'us-west-1')]) {
+                        sh 'terraform destroy --auto-approve'
                     }
                 }
             }

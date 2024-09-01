@@ -7,7 +7,7 @@
     2- Terraform with Jenkins
     3- AWS with Jenkins
 
-#      Create an EC2-instance in AWS, install Jenkins/Java, and Terraform in the running server:
+###    Create an EC2-instance in AWS, install Jenkins/Java, and Terraform in the running server:
 
         Jenkins installation: https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
         Terraform installation: https://developer.hashicorp.com/terraform/install

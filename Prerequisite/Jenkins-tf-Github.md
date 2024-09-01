@@ -13,7 +13,7 @@
         Terraform installation: https://developer.hashicorp.com/terraform/install
 
 
-###    1- Integrate your local environment with a GitHub account by generating a public and private key. 
+###    1- Integrate your local environment with a GitHub account by generating a public key. 
         ssh-keygen. cat the public key and paste it in the GitHub profile settings--> ssh&GPG keys--> 
         New ssh key and paste the public key in the box. This way you have set the configuration of the 
         Github account and your local environment.

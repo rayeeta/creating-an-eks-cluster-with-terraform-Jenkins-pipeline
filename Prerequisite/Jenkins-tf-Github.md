@@ -33,33 +33,16 @@
         Manage Jenkins--> Security--> Credentials--> Global--> Add Credentials--> Kind(SSH username 
         with private key)> ID(give it a name of your choice)--> Private Key(check the box)--> Add-Paste the private key 
         in the box--> Ok and quit.
-
-###    1- Integrate your local environment with a GitHub account by generating a public and private key. 
-        ssh-keygen. cat the public key and paste it in the GitHub profile settings-ssh&GPG keys--> 
-        New ssh key and paste the public key in the box. This way you have set the configuration of the 
-        Github account and your local environment.
         
-###    2-  Integrating Jenkins UI with GitHub by Generating Personal Access Token Phase 1:
-    
-        Go to the GitHub UI and click on profile settings-Developers settings--> Personal Access Token Tokens (Classic)-->
-        Generate new token (classic)--> Give a name and select the scopes needed for the project you or your team will 
-        want GitHub to do. Copy the token and head over to the next stage.
-        
-###    3-  Integrating Jenkins env with the Personal-Access-Token phase 2: 
+###    5-  Integrating Jenkins env with the Personal-Access-Token phase 2: 
 
         In the Jenkins UI, head to Manage Jenkins--> System(Configure global systems and paths)--> Scroll down to the 
         GitHub section-GitHub server--> Give it a name, API URL stays the same--> Credentials--> Add-Jenkins--> 
         Kind(select: Secret Text)--> UserName(Give it a name)--> Password(make sure to paste the 
         Personal Access Token created from Github)--> ID(give the token a name)--> ADD and quit--> +ADD dropdown 
         section select the name of the token you gave at signup-Run Test Connection--> Apply and Save.
-        
-###    4-  Hosting the PRIVATE key from ssh-keygen phase 3: 
-        Cat the private key and copy its entire content then head to the Jenkins dashboard--> 
-        Manage Jenkins--> Security--> Credentials--> Global--> Add Credentials--> Kind(SSH username 
-        with private key)> ID(give it a name of your choice)--> Private Key(check the box)--> Add-Paste the private key 
-        in the box--> Ok and quit.
 
-###    5-  AWS and Jenkins Integration:
+###    6-  AWS and Jenkins Integration:
 
         Install Necessary Jenkins Plugins
         First, install the required Jenkins plugins for AWS integration:

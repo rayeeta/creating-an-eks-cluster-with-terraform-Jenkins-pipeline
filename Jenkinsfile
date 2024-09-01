@@ -7,6 +7,10 @@ pipeline {
         // Example: AWS credentials ID for use with Terraform
         AWS_CREDENTIALS_ID = '339712843218'
     }
+    environment {
+        // Set this to 'true' or 'false' depending on whether you want to allow destruction
+        DESTROY_RESOURCES = 'false'
+    }
 
     stages {
         stage('Checkout SCM') {
@@ -48,19 +52,22 @@ pipeline {
                 }
             }
         }
-
+    }
+stages {
         stage('Terraform Destroy') {
             steps {
                 script {
-                    // Destroy the Terraform-managed infrastructure with auto-approval
-                    withCredentials([aws(credentialsId: "${env.AWS_CREDENTIALS_ID}", region: 'us-west-1')]) {
-                        sh 'terraform destroy --auto-approve'
+                    if (env.DESTROY_RESOURCES == 'true') {
+                        withCredentials([aws(credentialsId: "${env.AWS_CREDENTIALS_ID}", region: 'us-west-1')]) {
+                            sh 'terraform destroy --auto-approve'
+                        }
+                    } else {
+                        echo "Skipping Terraform destroy as DESTROY_RESOURCES is set to false."
                     }
                 }
             }
         }
     }
-
     post {
         always {
             script {

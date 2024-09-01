@@ -17,19 +17,19 @@
         ssh-keygen. cat the public key and paste it in the GitHub profile settings--> ssh&GPG keys--> 
         New ssh key and paste the public key in the box. This way you have set the configuration of the 
         Github account and your local environment.
-        
-###    2-  Integrating Jenkins UI with GitHub by Generating Personal Access Token:
-    
-        Go to the GitHub UI and click on profile settings-Developers settings--> Personal Access Token Tokens (Classic)-->
-        Generate a new token (classic)--> Give a name and select the scopes needed for the project you or your team  
-        want GitHub to do. Copy the token and head over to the next stage.
-        
-###    3-  Sign in to the Jenkins UI to access the Jenkins dashboard: 
+
+###    2-  Sign in to the Jenkins UI to access the Jenkins dashboard: 
 
         Browse to http://localhost:8080 e.g(18.144.61.150:8080 hit ENTER) (or whichever port you configured 
         for Jenkins when installing it) and wait until the Unlock Jenkins page appears. Sudo cat             
         /var/lib/jenkins/secrets/initialAdminPassword, use the key in the Jenkins UI and walkthrough
-        with the installation to the end.
+        with the installation to the end.        
+        
+###    3-  Integrating Jenkins UI with GitHub by Generating Personal Access Token:
+    
+        Go to the GitHub UI and click on profile settings-Developers settings--> Personal Access Token Tokens (Classic)-->
+        Generate a new token (classic)--> Give a name and select the scopes needed for the project you or your team  
+        want GitHub to do. Copy the token and head over to the next stage.
         
 ###    4-  Hosting the PRIVATE key from ssh-keygen: 
         Cat the private key and copy its entire content then head to the Jenkins dashboard--> 

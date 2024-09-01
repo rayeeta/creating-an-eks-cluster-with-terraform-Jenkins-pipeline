@@ -19,15 +19,12 @@
         Generate new token (classic)--> Give a name and select the scopes needed for the project you or your team will 
         want GitHub to do. Copy the token and head over to the next stage.
         
-###    3-  Integrating Jenkins env with the Personal-Access-Token phase 2: 
+###    3-  Sign in to the Jenkins UI to access the Jenkins dashboard: 
 
-        Browse to http://localhost:8080 e.g(18.144.61.150:8080 and hit ENTER) (or whichever port you configured 
-        for Jenkins when installing it) and wait until the Unlock Jenkins page appears.
-        In the Jenkins UI, head to Manage Jenkins--> System(Configure global systems and paths)--> Scroll down to the 
-        GitHub section-GitHub server--> Give it a name, API URL stays the same--> Credentials--> Add-Jenkins--> 
-        Kind(select: Secret Text)--> UserName(Give it a name)--> Password(make sure to paste the 
-        Personal Access Token created from Github)--> ID(give the token a name)--> ADD and quit--> +ADD dropdown 
-        section select the name of the token you gave at signup-Run Test Connection--> Apply and Save.
+        Browse to http://localhost:8080 e.g(18.144.61.150:8080 hit ENTER) (or whichever port you configured 
+        for Jenkins when installing it) and wait until the Unlock Jenkins page appears. Sudo cat             
+        /var/lib/jenkins/secrets/initialAdminPassword, use the key in the Jenkins UI and walkthrough
+        with the installation to the end.
         
 ###    4-  Hosting the PRIVATE key from ssh-keygen phase 3: 
         Cat the private key and copy its entire content then head to the Jenkins dashboard--> 

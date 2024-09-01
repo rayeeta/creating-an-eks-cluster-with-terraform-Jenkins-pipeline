@@ -5,6 +5,7 @@
 #### Tools to integrate with Jenkins:
     1- GitHub with Jenkins
     2- Terraform with Jenkins
+    3- AWS with Jenkins
 
 
 ###    1- Integrate your local environment with a GitHub account by generating a public and private key. 

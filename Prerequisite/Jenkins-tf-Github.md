@@ -1,6 +1,6 @@
 ## Let's break down each step in more detail to ensure you can follow along and get everything set up correctly.
 
-### Detailed Step-by-Step Guide
+### Detailed Step-by-Step Guide.
 
 #### Tools to integrate with Jenkins:
     1- GitHub with Jenkins

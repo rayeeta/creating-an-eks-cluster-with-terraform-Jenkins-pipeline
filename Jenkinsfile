@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     // Generate Terraform plan
-                    withCredentials([aws(credentialsId: "${env.AWS_CREDENTIALS_ID}", region: 'us-east-1')]) {
+                    withCredentials([aws(credentialsId: "${env.AWS_CREDENTIALS_ID}", region: 'us-west-1')]) {
                         sh 'terraform plan -out=tfplan'
                     }
                 }

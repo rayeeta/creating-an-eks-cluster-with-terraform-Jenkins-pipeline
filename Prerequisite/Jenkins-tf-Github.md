@@ -7,7 +7,7 @@
     2- Terraform with Jenkins
     3- AWS with Jenkins
 
-###    Create an EC2-instance in AWS, install Jenkins/Java, and Terraform in the running server:
+###    Create an EC2-instance in AWS, and install Jenkins/Java, and Terraform in the running server:
 
         Jenkins installation: https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
         Terraform installation: https://developer.hashicorp.com/terraform/install
@@ -21,7 +21,7 @@
 ###    2-  Integrating Jenkins UI with GitHub by Generating Personal Access Token:
     
         Go to the GitHub UI and click on profile settings-Developers settings--> Personal Access Token Tokens (Classic)-->
-        Generate new token (classic)--> Give a name and select the scopes needed for the project you or your team will 
+        Generate a new token (classic)--> Give a name and select the scopes needed for the project you or your team  
         want GitHub to do. Copy the token and head over to the next stage.
         
 ###    3-  Sign in to the Jenkins UI to access the Jenkins dashboard: 
@@ -31,19 +31,19 @@
         /var/lib/jenkins/secrets/initialAdminPassword, use the key in the Jenkins UI and walkthrough
         with the installation to the end.
         
-###    4-  Hosting the PRIVATE key from ssh-keygen phase 3: 
+###    4-  Hosting the PRIVATE key from ssh-keygen: 
         Cat the private key and copy its entire content then head to the Jenkins dashboard--> 
         Manage Jenkins--> Security--> Credentials--> Global--> Add Credentials--> Kind(SSH username 
         with private key)> ID(give it a name of your choice)--> Private Key(check the box)--> Add-Paste the private key 
         in the box--> Ok and quit.
         
-###    5-  Integrating Jenkins env with the Personal-Access-Token phase 2: 
+###    5-  Integrating Jenkins env with the Personal-Access-Token: 
 
         In the Jenkins UI, head to Manage Jenkins--> System(Configure global systems and paths)--> Scroll down to the 
         GitHub section-GitHub server--> Give it a name, API URL stays the same--> Credentials--> Add-Jenkins--> 
         Kind(select: Secret Text)--> UserName(Give it a name)--> Password(make sure to paste the 
         Personal Access Token created from Github)--> ID(give the token a name)--> ADD and quit--> +ADD dropdown 
-        section select the name of the token you gave at signup-Run Test Connection--> Apply and Save.
+        select the name of the token you gave at signup-Run Test Connection--> Apply and Save.
 
 ###    6-  AWS and Jenkins Integration:
 

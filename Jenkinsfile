@@ -1,66 +1,55 @@
 
 pipeline {
+    agent any  // Use any available agent
 
-    parameters {
-        booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
-    } 
     environment {
-        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
-        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        // Define any environment variables here, if needed
+        // Example: AWS credentials ID for use with Terraform
+        AWS_CREDENTIALS_ID = '339712843218'
     }
 
-    agent any
-
     stages {
-        stage('Checkout') {
+        stage('Checkout SCM') {
             steps {
-                script {
-                    echo 'Checking out code from Git repository...'
-                    dir("terraform") {
-                        git branch: 'master', url: 'https://github.com/rayeeta/eks-terraform-jenkins-pipeline.git'
-                    }
-                }
+                // Checkout code from the repository
+                checkout scm
             }
         }
 
         stage('Terraform Init') {
             steps {
-                echo 'Initializing Terraform...'
-                dir("terraform") {
-                    sh 'terraform init'
-                }
-            }
-        }
-
-        stage('Terraform Validate') {
-            steps {
-                echo 'Validating Terraform configuration...'
-                dir("terraform") {
-                    sh 'terraform validate'
+                script {
+                    // Initialize Terraform
+                    withCredentials([aws(credentialsId: "${env.AWS_CREDENTIALS_ID}", region: 'us-west-1')]) {
+                        sh 'terraform init'
+                    }
                 }
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                echo 'Generating Terraform plan...'
-                dir("terraform") {
-                    sh 'terraform plan -out=tfplan'
+                script {
+                    // Generate Terraform plan
+                    withCredentials([aws(credentialsId: "${env.AWS_CREDENTIALS_ID}", region: 'us-east-1')]) {
+                        sh 'terraform plan -out=tfplan'
+                    }
                 }
             }
         }
 
-        stage('Terraform Apply') {
-            when {
-                expression {
-                    return params.autoApprove
-                }
-            }
+        stage('Approval') {
             steps {
-                echo 'Applying Terraform plan...'
-                dir("terraform") {
-                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: "${AWS_CREDENTIALS_ID}"]]) {
-                        sh 'terraform apply -auto-approve tfplan'
+                input message: 'Approve Terraform Plan?', ok: 'Approve'
+            }
+        }
+
+        stage('Terraform Apply') {
+            steps {
+                script {
+                    // Apply the Terraform plan
+                    withCredentials([aws(credentialsId: "${env.AWS_CREDENTIALS_ID}", region: 'us-west-1')]) {
+                        sh 'terraform apply -input=false tfplan'
                     }
                 }
             }
@@ -68,15 +57,20 @@ pipeline {
     }
 
     post {
-        success {
-            echo 'Infrastructure successfully applied.'
-        }
-        failure {
-            echo 'Infrastructure application failed.'
-        }
         always {
-            echo 'Cleaning up workspace...'
-            cleanWs()
+            script {
+                // Cleanup workspace or other post-build actions
+                echo 'Cleaning up...'
+                cleanWs()
+            }
+        }
+
+        success {
+            echo 'Pipeline succeeded!'
+        }
+
+        failure {
+            echo 'Pipeline failed!'
         }
     }
 }

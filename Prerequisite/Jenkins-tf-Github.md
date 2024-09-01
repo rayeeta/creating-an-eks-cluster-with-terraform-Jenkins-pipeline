@@ -11,7 +11,25 @@
 
         Jenkins installation: https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
         Terraform installation: https://developer.hashicorp.com/terraform/install
+        
+###    Install AWS CLI
 
+###     Download the AWS CLI version 2 installer:
+
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        
+###     Unzip the downloaded package:
+
+        sudo apt install unzip -y
+        unzip awscliv2.zip
+
+###     Run the installer:
+
+        sudo ./aws/install
+
+###     Verify the installation:
+
+        aws --version
 
 ###    1- Integrate your local environment with a GitHub account by generating a public key. 
         ssh-keygen. cat the public key and paste it in the GitHub profile settings--> ssh&GPG keys--> 

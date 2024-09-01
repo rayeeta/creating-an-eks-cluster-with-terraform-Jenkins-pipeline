@@ -65,16 +65,47 @@
         in the box--> Ok and quit.
 
 ###    6-  AWS and Jenkins Integration:
+Create a user in AWS IAM ==> attach ==> Next==> Attach policies directly==> Next==> 
+Create User.
+# Go to Users: 
+Click on the user==> Security credentials==> Create Access Key==> Command Line Interface (CLI)
+Confirmation==> Next==> Create Access Key==> Copy the Access key and 
+Secret access key(to use later in the pipeline job)
 
-        Install Necessary Jenkins Plugins
-        First, install the required Jenkins plugins for AWS integration:
 
-        AWS Steps: Provides steps for interacting with AWS services.
-        AWS CodeDeploy Plugin: For deploying applications using AWS CodeDeploy.
-        Amazon ECR Plugin: For working with Amazon Elastic Container Registry.
-        Amazon ECS Plugin: For interacting with Amazon Elastic Container Service.
-        AWS Lambda Plugin: For deploying AWS Lambda functions.
+##      Verify AWS Credentials in Jenkins
+# Login to Jenkins Dashboard:
 
+Open your Jenkins instance in a web browser.
+
+# Go to the Jenkins dashboard:
+Click on "Manage Jenkins" from the sidebar.
+# Access Credentials:
+
+Click on "Manage Credentials" or "Credentials" depending on your Jenkins version.
+# Check AWS Credentials:
+
+Ensure that the AWS credentials with Account ID 339712843218 exist in the appropriate domain 
+(global or specific domain).
+
+If the credentials do not exist, you will need to create them:
+
+Click on the domain (e.g., (global) if it's a global credential).
+Click on "Add Credentials" (typically found on the left sidebar).
+Fill in the AWS Credentials:
+
+# Kind: Choose "AWS Credentials".
+
+# Access Key ID: Enter your AWS Access Key ID.
+
+# Secret Access Key: Enter your AWS Secret Access Key.
+
+# ID: Enter 339712843218 or another unique ID (make sure it matches the ID used in your Jenkinsfile).
+
+# Description: Optionally, provide a description for the credentials.
+
+# Click "OK" to save.
+        
 #       To install these plugins:
 
         Go to Manage Jenkins > Manage Plugins.

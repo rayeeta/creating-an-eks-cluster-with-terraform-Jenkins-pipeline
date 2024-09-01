@@ -1,4 +1,3 @@
-
 pipeline {
     agent any  // Use any available agent
 
@@ -47,9 +46,9 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 script {
-                    // Apply the Terraform plan
+                    // Apply the Terraform plan with auto-approval
                     withCredentials([aws(credentialsId: "${env.AWS_CREDENTIALS_ID}", region: 'us-west-1')]) {
-                        sh 'terraform apply -input=false tfplan'
+                        sh 'terraform apply --auto-approve tfplan'
                     }
                 }
             }

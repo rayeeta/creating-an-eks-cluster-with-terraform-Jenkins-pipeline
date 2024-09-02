@@ -10,26 +10,26 @@ pipeline {
         DESTROY_RESOURCES = 'true'
     }
 
-  //  stages {
-      //  stage('Checkout SCM') {
-          //  steps {
+    stages {
+        stage('Checkout SCM') {
+            steps {
                 // Checkout code from the repository
-            //    checkout scm
-         //   }
-       // }
+                checkout scm
+            }
+        }
 
-     //   stage('Terraform Init') {
-          //  steps {
-            //    script {
+        stage('Terraform Init') {
+            steps {
+                script {
                     // Initialize Terraform
-             //       withCredentials([aws(credentialsId: "${env.AWS_CREDENTIALS_ID}", region: 'us-west-1')]) {
-                   //     sh 'terraform init'
-                //    }
-            //    }
-          //  }
-    //    }
+                    withCredentials([aws(credentialsId: "${env.AWS_CREDENTIALS_ID}", region: 'us-west-1')]) {
+                        sh 'terraform init'
+                    }
+                }
+            }
+        }
 
-  /*      stage('Terraform Plan') {
+        stage('Terraform Plan') {
             steps {
                 script {
                     // Generate Terraform plan
@@ -39,8 +39,8 @@ pipeline {
                 }
             }
         }
-*/
-  /*      stage('Terraform Apply') {
+
+        stage('Terraform Apply') {
             steps {
                 script {
                     // Apply the Terraform plan with auto-approval
@@ -50,7 +50,7 @@ pipeline {
                 }
             }
         }
-*/
+
         stage('Terraform Destroy') {
             steps {
                 script {

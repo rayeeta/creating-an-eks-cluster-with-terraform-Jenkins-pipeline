@@ -61,8 +61,8 @@ aws eks --region <your-region> update-kubeconfig --name <your-cluster-name>
 
 
 For example:
-bash
-aws eks --region us-west-2 update-kubeconfig --name my-cluster
+
+aws eks --region us-west-1 update-kubeconfig --name devops-tutorial-cluster-2
 
 
 This command updates (or creates) your kubeconfig file located in `~/.kube/config

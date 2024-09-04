@@ -65,12 +65,15 @@ type: Opaque
 echo TEZTTEJkQkNObFJKbGdmbw== | base64 --decode
 LFSLBdBCNlRJlgfo
 
+# Clone the repo to start working from it in my case it is
+https://github.com/rayeeta/argocd-installation-in-a-ks8-cluster-project-step-by-step-using-kubeadm.git
+
 ```
 </br>
 
 #### Links
 
-* Config repo: (https://github.com/rayeeta/argocd-project/tree/master)
+* Config repo: ([[https://github.com/rayeeta/argocd-project/tree/master](https://github.com/rayeeta/argocd-installation-in-a-ks8-cluster-project-step-by-step-using-kubeadm.git)](https://github.com/rayeeta/argocd-installation-in-a-ks8-cluster-project-step-by-step-using-kubeadm.git))
   
 * Docker repo: [https://hub.docker.com/repository/docker/ereta19/argocdproject/general](https://hub.docker.com/repository/docker/ereta19/argocdproject/general)
 

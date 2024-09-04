@@ -73,7 +73,7 @@ https://github.com/rayeeta/argocd-installation-in-a-ks8-cluster-project-step-by-
 
 #### Links
 
-* Config repo: ([[https://github.com/rayeeta/argocd-project/tree/master](https://github.com/rayeeta/argocd-installation-in-a-ks8-cluster-project-step-by-step-using-kubeadm.git)](https://github.com/rayeeta/argocd-installation-in-a-ks8-cluster-project-step-by-step-using-kubeadm.git))
+* Config repo: [(https://github.com/rayeeta/argocd-installation-in-a-ks8-cluster-project-step-by-step-using-kubeadm.git)](https://github.com/rayeeta/argocd-installation-in-a-ks8-cluster-project-step-by-step-using-kubeadm.git))
   
 * Docker repo: [https://hub.docker.com/repository/docker/ereta19/argocdproject/general](https://hub.docker.com/repository/docker/ereta19/argocdproject/general)
 

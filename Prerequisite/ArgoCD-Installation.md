@@ -57,7 +57,7 @@ metadata:
   resourceVersion: "211607"
   uid: ca4bef2e-316e-48fe-98b8-286add92b6af
 type: Opaque
-*/ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo */
+// kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo 
 
 # you can change and delete init password
 

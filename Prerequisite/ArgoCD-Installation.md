@@ -16,22 +16,6 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 or
 kubectl -n argocd get secret argocd-initial-admin-secret -n argocd -o yaml
 #### Copy the password in base 64 encoded value
-#### Decode the password:
-echo <the-encoded-password> | base64 --decode
-#### Copy the password without the % sign and head over to the ArgoCD UI
-
-
-#### Commands
-
-```bash
-# install ArgoCD in k8s
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-
-# access ArgoCD UI
-kubectl get svc -n argocd
-kubectl port-forward svc/argocd-server 8080:443 -n argocd
-
 # login with admin user and below token (as in documentation):
 kubectl get secret argocd-initial-admin-secret -n argocd -o yaml
 $ kubectl get secret argocd-initial-admin-secret -n argocd -o yaml // You get something like this below
@@ -74,6 +58,20 @@ destination cluster
 
 # kubectl apply -f application.yaml
 Apply the application.yaml which will be the only apply for this Argocd project
+
+#### Copy the password without the % sign and head over to the ArgoCD UI
+
+
+#### Commands
+
+```bash
+# install ArgoCD in k8s
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+# access ArgoCD UI
+kubectl get svc -n argocd
+kubectl port-forward svc/argocd-server 8080:443 -n argocd
 
 ```
 </br>

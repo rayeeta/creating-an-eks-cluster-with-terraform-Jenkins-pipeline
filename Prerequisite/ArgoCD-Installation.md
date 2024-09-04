@@ -61,6 +61,10 @@ type: Opaque
 
 # you can change and delete init password
 
+# Decode the password:
+echo TEZTTEJkQkNObFJKbGdmbw== | base64 --decode
+LFSLBdBCNlRJlgfo
+
 ```
 </br>
 

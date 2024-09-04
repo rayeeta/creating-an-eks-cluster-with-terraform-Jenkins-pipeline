@@ -33,7 +33,31 @@ kubectl get svc -n argocd
 kubectl port-forward svc/argocd-server 8080:443 -n argocd
 
 # login with admin user and below token (as in documentation):
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo
+kubectl get secret argocd-initial-admin-secret -n argocd -o yaml
+$ kubectl get secret argocd-initial-admin-secret -n argocd -o yaml // You get something like this below
+apiVersion: v1
+data:
+  password: TEZTTEJkQkNObFJKbGdmbw==
+kind: Secret
+metadata:
+  creationTimestamp: "2024-09-04T08:25:56Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:password: {}
+      f:type: {}
+    manager: argocd-server
+    operation: Update
+    time: "2024-09-04T08:25:56Z"
+  name: argocd-initial-admin-secret
+  namespace: argocd
+  resourceVersion: "211607"
+  uid: ca4bef2e-316e-48fe-98b8-286add92b6af
+type: Opaque
+/* kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo */
 
 # you can change and delete init password
 

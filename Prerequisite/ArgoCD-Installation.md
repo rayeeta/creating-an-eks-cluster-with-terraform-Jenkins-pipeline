@@ -65,7 +65,7 @@ type: Opaque
 echo TEZTTEJkQkNObFJKbGdmbw== | base64 --decode
 LFSLBdBCNlRJlgfo
 
-# Clone the repo to start working from it in my case it is
+# Clone the repo and cd to it in your local env to start working from it, in my case it is
 https://github.com/rayeeta/argocd-installation-in-a-ks8-cluster-project-step-by-step-using-kubeadm.git
 
 ```

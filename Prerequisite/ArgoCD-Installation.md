@@ -72,6 +72,9 @@ https://github.com/rayeeta/argocd-installation-in-a-ks8-cluster-project-step-by-
 We can access this internal(CLUSTER-IP) service because Argocd is deployed inside the
 destination cluster
 
+# kubectl apply -f application.yaml
+Apply the application.yaml which will be the only apply for this Argocd project
+
 ```
 </br>
 

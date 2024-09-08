@@ -75,7 +75,7 @@ pipeline {
             }
         }
 
-        success you are good to go {
+        success {
             echo 'Pipeline succeeded!'
         }
 

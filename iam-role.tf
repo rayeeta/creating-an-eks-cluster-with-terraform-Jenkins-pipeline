@@ -28,7 +28,7 @@ resource "aws_iam_role_policy_attachment" "eks_service_policy" {
 
 # EKS Cluster
 resource "aws_eks_cluster" "eks_cluster" {
-  name     = "devops-tutorial-cluster-2"
+  name     = "devops-tutorial-DEMO-cluster"
   role_arn = aws_iam_role.eks_role-2.arn
 
   vpc_config {

@@ -1,5 +1,5 @@
 # Provider Configuration
 provider "aws" {
-  region = "us-west-1" # Replace with your desired region
+  region = "us-west-2" # Replace with your desired region
 }
 

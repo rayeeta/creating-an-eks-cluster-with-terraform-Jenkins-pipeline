@@ -8,7 +8,8 @@
 
 #### 1. Install AWS CLI
 
-If you haven't installed the AWS CLI yet, you can download and install it from [AWS CLI installation guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
+If you haven't installed the AWS CLI yet, you can download and install it from [AWS CLI installation guide]
+(https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
 
 Verify the installation:
 
@@ -25,7 +26,8 @@ This will require you to input your AWS Access Key ID, Secret Access Key, region
 
 #### 3. Install kubectl
 
-You can install kubectl by following the [official guide](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+You can install kubectl by following the [official guide]
+(https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
 For example, on Windows:
 
@@ -40,12 +42,12 @@ kubectl version --client
 
 #### 4. Install eksctl
 
-You can install eksctl by following the [official guide](https://eksctl.io/).
+You can install eksctl by following the [official guide]
+(https://eksctl.io/).
 
 For example, to install eksctl on Windows, you can use Chocolatey:
 
 choco install eksctl
-
 
 Verify the installation:
 

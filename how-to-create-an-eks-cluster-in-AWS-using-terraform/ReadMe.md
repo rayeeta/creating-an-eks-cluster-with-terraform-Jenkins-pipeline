@@ -23,10 +23,10 @@ Configure your AWS CLI with your credentials:
 aws configure
 
 This will require you to input your AWS: 
-*Access Key ID* 
-*Secret Access Key* 
-*Region*
-*Output in json format*
+1. *Access Key ID* 
+2. *Secret Access Key* 
+3. *Region*
+4. *Output in json format*
 
 #### 3. Install kubectl
 

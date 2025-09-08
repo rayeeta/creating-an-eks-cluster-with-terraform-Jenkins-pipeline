@@ -22,14 +22,18 @@ Configure your AWS CLI with your credentials:
 
 aws configure
 
-This will require you to input your AWS Access Key ID, Secret Access Key, region, and output format.
+This will require you to input your AWS: 
+*Access Key ID* 
+*Secret Access Key* 
+*Region*
+*Output in json format*
 
 #### 3. Install kubectl
 
-You can install kubectl by following the [official guide]
+You can install kubectl by following the official guide:
 (https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
-For example, on Windows:
+For example, on Windows PowerShell:
 
 curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/windows/amd64/kubectl.exe"
 chmod +x kubectl.exe
@@ -42,7 +46,7 @@ kubectl version --client
 
 #### 4. Install eksctl
 
-You can install eksctl by following the [official guide]
+You can install eksctl by following the official guide:
 (https://eksctl.io/).
 
 For example, to install eksctl on Windows, you can use Chocolatey:

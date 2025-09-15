@@ -74,6 +74,7 @@ If you omit --alias, the context name defaults to the cluster name.
 
 ### Switching Between Clusters
 2. View available contexts
+   
 kubectl config get-contexts
 
 Example output:

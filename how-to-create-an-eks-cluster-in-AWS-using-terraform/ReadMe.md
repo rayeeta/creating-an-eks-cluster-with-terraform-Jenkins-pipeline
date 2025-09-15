@@ -1,75 +1,119 @@
-# To connect to your EKS cluster from your local Git Bash terminal using Terraform, follow these steps:
+How to create and connect to your EKS cluster from your local terminal: follow these steps:
+Prerequisites
+Before you can connect to your EKS clusters:
 
-1. *Install AWS CLI*: If you haven't already, install the AWS CLI.
-2. *Install kubectl*: Ensure you have kubectl installed for controlling the Kubernetes cluster.
-3. *Install eksctl*: This is a command-line tool for EKS to simplify cluster management. 
+Install required tools locally:
 
-### Step-by-Step Guide
+Terraform (you should already have 1.13.1).
 
-#### 1. Install AWS CLI
+AWS CLI v2 .
 
-If you haven't installed the AWS CLI yet, you can download and install it from [AWS CLI installation guide]
-(https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
+kubectl .
 
-Verify the installation:
+(Optional but recommended) eksctl (handy for cluster ops).
 
-aws --version
+AWS account setup:
+An IAM user/role with sufficient permissions:
 
+AmazonEKSClusterPolicy
 
-#### 2. Configure AWS CLI
+AmazonEKSWorkerNodePolicy
 
-Configure your AWS CLI with your credentials:
+AmazonEKS_CNI_Policy
 
+AmazonEC2ContainerRegistryReadOnly
+
+AdministratorAccess (if testing/demo).
+
+AWS credentials configured locally:
 aws configure
 
-This will require you to input your AWS: 
-1. *Access Key ID* 
-2. *Secret Access Key* 
-3. *Region*
-4. *Output in json format*
+Provide:
+AWS Access Key ID
 
-#### 3. Install kubectl
+AWS Secret Access Key
 
-You can install kubectl by following the official guide:
-(https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+Default region → us-west-2
 
-For example, on Windows PowerShell:
+Default output format → json
 
-curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/windows/amd64/kubectl.exe"
+Terraform setup:
+Run terraform init (downloads providers).
 
-chmod +x kubectl.exe
+Run terraform apply (deploys VPC, EKS clusters, node groups).
 
+Commands to Connect to a Cluster
+After your clusters are created (bmt-demo-cluster-1 and bmt-demo-cluster-2):
 
-Verify the installation:
+Update kubeconfig for a cluster
+Use the AWS CLI to merge cluster credentials into your ~/.kube/config:
 
-kubectl version --client
+Connect to Cluster 1
+aws eks update-kubeconfig --region us-west-2 --name bmt-demo-cluster-1 --alias bmt1
 
+Connect to Cluster 2
+aws eks update-kubeconfig --region us-west-2 --name bmt-demo-cluster-2 --alias bmt2
 
-#### 4. Install eksctl
+--alias ensures your kubeconfig stores them under different contexts (bmt1 and bmt2).
 
-You can install eksctl by following the official guide:
-(https://eksctl.io/).
+If you omit --alias, the context name defaults to the cluster name.
 
-For example, to install eksctl on Windows, you can use Chocolatey:
+Switching Between Clusters
+View available contexts
+kubectl config get-contexts
 
-choco install eksctl
+Example output: CURRENT NAME CLUSTER AUTHINFO NAMESPACE
 
-Verify the installation:
+    bmt1    arn:aws:eks:us-west-2:123456789012:cluster/bmt-demo-cluster-1   arn:aws:eks:...:bmt-demo-cluster-1   default
+    bmt2    arn:aws:eks:us-west-2:123456789012:cluster/bmt-demo-cluster-2   arn:aws:eks:...:bmt-demo-cluster-2   default
+Switch to a cluster context
+Switch to Cluster 1
+kubectl config use-context bmt1
 
-eksctl version
+Switch to Cluster 2
+kubectl config use-context bmt2
 
+Verify connection kubectl get nodes kubectl get pods -A
+Switching Between Clusters in Different Regions / AZs
+If your clusters are in different regions (e.g., us-west-2 and us-east-1):
 
-#### 5. Update kubeconfig
+aws eks update-kubeconfig --region us-east-1 --name cluster-in-east --alias east-cluster
 
-Update your kubeconfig to connect to your EKS cluster. Run:
+aws eks update-kubeconfig --region us-west-2 --name cluster-in-west --alias west-cluster
 
-aws eks --region <your-region> update-kubeconfig --name <your-cluster-name>
+Then switch contexts the same way with kubectl config use-context.
 
+Availability Zones (AZs) don’t affect kubeconfig switching.
 
+They only matter for subnet/instance placement inside the cluster.
 
-For example:
+Summary Workflow
+Deploy cluster(s)
 
-aws eks --region us-west-1 update-kubeconfig --name devops-tutorial-cluster-2
+terraform init
 
+terraform fmt
 
-This command updates (or creates) your kubeconfig file located in `~/.kube/config
+terrafrom validate
+
+terraform plan
+
+terraform apply -auto-approve
+
+Get cluster credentials
+aws eks update-kubeconfig --region us-west-2 --name bmt-demo-cluster-1 --alias bmt1
+
+aws eks update-kubeconfig --region us-west-2 --name bmt-demo-cluster-2 --alias bmt2
+
+List contexts
+kubectl config get-contexts
+
+Switch cluster
+kubectl config use-context bmt1 # or bmt2
+
+Verify nodes
+kubectl get nodes
+
+⚡ Pro Tip: You can use kubectx (a kubectl context switcher tool) to quickly swap between clusters with short commands:
+
+kubectx bmt1 kubectx bmt2

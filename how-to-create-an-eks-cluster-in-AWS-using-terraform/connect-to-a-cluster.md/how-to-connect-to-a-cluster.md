@@ -83,14 +83,16 @@ CURRENT   NAME    CLUSTER                 AUTHINFO              NAMESPACE
           bmt2    arn:aws:eks:us-west-2:123456789012:cluster/bmt-demo-cluster-2   arn:aws:eks:...:bmt-demo-cluster-2   default
 
 3. Switch to a cluster context
-# Switch to Cluster 1
+*# Switch to Cluster1*
 kubectl config use-context bmt1
 
 # Switch to Cluster 2
 kubectl config use-context bmt2
 
-4. Verify connection
+*4. Verify connection*
+   
 kubectl get nodes
+
 kubectl get pods -A
 
 ### Switching Between Clusters in Different Regions / AZs

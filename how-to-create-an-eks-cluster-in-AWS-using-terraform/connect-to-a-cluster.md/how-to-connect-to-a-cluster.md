@@ -18,9 +18,9 @@ kubectl
 (Optional but recommended) eksctl
  (handy for cluster ops).
 
-AWS account setup:
+### AWS account setup:
 
-An IAM user/role with sufficient permissions:
+*An IAM user/role with sufficient permissions:*
 
 AmazonEKSClusterPolicy
 
@@ -32,12 +32,12 @@ AmazonEC2ContainerRegistryReadOnly
 
 AdministratorAccess (if testing/demo).
 
-AWS credentials configured locally:
+### AWS credentials configured locally:
 
 aws configure
 
 
-Provide:
+### Provide:
 
 AWS Access Key ID
 
@@ -47,7 +47,7 @@ Default region → us-west-2
 
 Default output format → json
 
-Terraform setup:
+### Terraform setup:
 
 Run terraform init (downloads providers).
 
@@ -61,10 +61,10 @@ After your clusters are created (bmt-demo-cluster-1 and bmt-demo-cluster-2):
 
 Use the AWS CLI to merge cluster credentials into your ~/.kube/config:
 
-# Connect to Cluster 1
+### Connect to Cluster 1
 aws eks update-kubeconfig --region us-west-2 --name bmt-demo-cluster-1 --alias bmt1
 
-# Connect to Cluster 2
+### Connect to Cluster 2
 aws eks update-kubeconfig --region us-west-2 --name bmt-demo-cluster-2 --alias bmt2
 
 
@@ -110,26 +110,29 @@ They only matter for subnet/instance placement inside the cluster.
 Deploy cluster(s)
 
 terraform init
-terraform apply
+terraform fmt
+terrafrom validate
+terraform plan
+terraform apply -auto-approve
 
 
-Get cluster credentials
+### Get cluster credentials
 
 aws eks update-kubeconfig --region us-west-2 --name bmt-demo-cluster-1 --alias bmt1
 aws eks update-kubeconfig --region us-west-2 --name bmt-demo-cluster-2 --alias bmt2
 
 
-List contexts
+### List contexts
 
 kubectl config get-contexts
 
 
-Switch cluster
+### Switch cluster
 
 kubectl config use-context bmt1   # or bmt2
 
 
-Verify nodes
+### Verify nodes
 
 kubectl get nodes
 

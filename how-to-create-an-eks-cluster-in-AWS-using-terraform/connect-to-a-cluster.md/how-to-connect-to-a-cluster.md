@@ -1,4 +1,4 @@
-# How to connect to your EKS cluster from your local terminal using Terraform, follow these steps:
+# How to create and connect to your EKS cluster from your local terminal: follow these steps:
 
 ### Prerequisites
 

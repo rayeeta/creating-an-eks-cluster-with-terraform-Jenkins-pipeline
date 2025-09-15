@@ -2,7 +2,7 @@
 # EKS Cluster
 ############################
 resource "aws_eks_cluster" "eks_cluster" {
-  name     = "Bmt-demo-cluster"
+  name     = "bmt-demo-cluster-1"
   role_arn = aws_iam_role.cluster_role.arn
   version  = "1.33"
 

@@ -98,12 +98,14 @@ kubectl get pods -A
 If your clusters are in different regions (e.g., us-west-2 and us-east-1):
 
 aws eks update-kubeconfig --region us-east-1 --name cluster-in-east --alias east-cluster
+
 aws eks update-kubeconfig --region us-west-2 --name cluster-in-west --alias west-cluster
 
 
 Then switch contexts the same way with kubectl config use-context.
 
 Availability Zones (AZs) don’t affect kubeconfig switching.
+
 They only matter for subnet/instance placement inside the cluster.
 
 ### Summary Workflow
@@ -124,6 +126,7 @@ terraform apply -auto-approve
 ### Get cluster credentials
 
 aws eks update-kubeconfig --region us-west-2 --name bmt-demo-cluster-1 --alias bmt1
+
 aws eks update-kubeconfig --region us-west-2 --name bmt-demo-cluster-2 --alias bmt2
 
 

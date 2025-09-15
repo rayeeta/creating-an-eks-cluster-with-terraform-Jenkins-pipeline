@@ -111,9 +111,13 @@ They only matter for subnet/instance placement inside the cluster.
 Deploy cluster(s)
 
 terraform init
+
 terraform fmt
+
 terrafrom validate
+
 terraform plan
+
 terraform apply -auto-approve
 
 
